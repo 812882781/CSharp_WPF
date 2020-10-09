@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1184" Width="400"
-        Loaded="Window_Loaded">
+        Title="MainWindow" Height="456" Width="500"
+        Loaded="Window_Loaded" 
+        ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+        ScrollViewer.VerticalScrollBarVisibility="Auto" 
+        ResizeMode="NoResize">
     <!--WPF STUDY -->
     <Border Padding="10">
         <StackPanel>
@@ -19,12 +22,13 @@
                 </Grid.ColumnDefinitions>
                 <Button x:Name="ONE_button" Click="ONE_button_Click" Margin="0 0 10 0" Grid.Column="0" Content="1"/>
                 <Button x:Name="TWO_button" Click="TWO_button_Click" Margin="0 0 0 0" Grid.Column="1" Content="2"/>
-                <Button Margin="10 0 0 0" Grid.Column="2" Content="3"/>
+                <!--控件的content与后台绑定，实时变化-->
+                <Button x:Name="THREE_button" Click="THREE_button_Click" Margin="10 0 0 0" Grid.Column="2" Content="{Binding Path=Date}" />
             </Grid>
             <TextBlock Text="STUDY" FontWeight="Black" Margin="0 10"/>
             <TextBlock Text="STUDY_DIS" FontWeight="Black" Margin="0 0"/>
             <TextBox x:Name="study_dis_text" Text="hello WPF!"></TextBox>
-           
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
@@ -52,7 +56,7 @@
                     <CheckBox x:Name="check1" Checked="check_Checked" Margin="0 0" Content="check1" />
                     <CheckBox x:Name="check2" Checked="check_Checked" Margin="0 0" Content="check2" />
                     <CheckBox x:Name="check3" Checked="check_Checked" Margin="0 0" Content="check3" />
-                    
+
                 </StackPanel>
                 <StackPanel  Grid.Column="1" Margin="0 10 0 0" >
                     <TextBlock Text="第二列" FontWeight="Black" Margin="10 0"/>
@@ -70,29 +74,33 @@
 
             </ComboBox>
 
-            
+
             <TextBlock Text="TreeView" FontWeight="Black" Margin="0 10 0 0"/>
             <!--利用绑定的方式做一个树 treeview-->
             <!--对应的代码中方法一-->
             <StackPanel Orientation="Horizontal">
-            <TreeView x:Name="treeview">
-                <!--用到TreeView的ItemTemplate属性，通过对该属性以HierarchicalDataTemplate进行赋值，从而能够实现自动搭建树的功能-->
-                <!--需要先在cs文件中，定义一个用于绑定的数据源Local-->
-                <TreeView.ItemTemplate>
-                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                <TreeView x:Name="treeview">
+                    <!--用到TreeView的ItemTemplate属性，通过对该属性以HierarchicalDataTemplate进行赋值，从而能够实现自动搭建树的功能-->
+                    <!--需要先在cs文件中，定义一个用于绑定的数据源Local-->
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
                             <StackPanel Orientation="Horizontal">
                                 <Image Margin="0 10 0 0 " Width="30" Source="image/image_2.png"></Image>
                                 <TextBlock Margin="5 10 0 0 " VerticalAlignment="Center" Text="{Binding Name}"/>
                             </StackPanel>
                         </HierarchicalDataTemplate>
-                </TreeView.ItemTemplate>
-            </TreeView>
+                    </TreeView.ItemTemplate>
+                </TreeView>
             </StackPanel>
-            
+
             <!--利用绑定的方式做一个树 treeview-->
             <!--对应的代码中方法二-->
             <StackPanel Orientation="Horizontal">
-                <TreeView x:Name="FolderView">
+                <TreeView x:Name="FolderView" 
+                          Width="200" Height="120"  
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                          ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    
                     <TreeView.Resources>
                         <Style TargetType="{x:Type TreeViewItem}">
                             <Setter Property="HeaderTemplate">
@@ -109,9 +117,9 @@
                     </TreeView.Resources>
                 </TreeView>
             </StackPanel>
-
-
-
         </StackPanel>
+
+
+
     </Border>
 </Window>

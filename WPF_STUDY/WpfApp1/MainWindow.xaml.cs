@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Help_CLASS;
 
 namespace WpfApp1
 {
@@ -112,7 +113,6 @@ namespace WpfApp1
             list_lo.Add(loc_1);
             list_lo.Add(loc_2);
 
-
             //绑定
             this.treeview.ItemsSource = list_lo;
         }
@@ -177,6 +177,27 @@ namespace WpfApp1
                 //本级Second_item添加到上级item的项目
                 item.Items.Add(Second_item);
             }
+        }
+
+        /// <summary>
+        /// 练习使用MVVM方式写代码
+        /// </summary>
+        Stru stru = new Stru();
+        private void commmon_use()
+        {
+            string c = stru.Comm_str; 
+        }
+
+        /// <summary>
+        /// PropertyChanged监听变化反映到控件上
+        /// 后台将可视化控件和监听类绑起来
+        /// </summary>
+        Stu_Blind stu_Blind = new Stu_Blind();
+
+        private void THREE_button_Click(object sender, RoutedEventArgs e)
+        {
+            this.THREE_button.DataContext = stu_Blind;
+           
         }
     }
 }
