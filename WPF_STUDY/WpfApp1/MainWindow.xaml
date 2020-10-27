@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="456" Width="500"
+        Title="MainWindow" Height="800" Width="500"
         Loaded="Window_Loaded" 
         ScrollViewer.HorizontalScrollBarVisibility="Auto" 
         ScrollViewer.VerticalScrollBarVisibility="Auto" 
@@ -100,7 +100,7 @@
                           Width="200" Height="120"  
                           ScrollViewer.HorizontalScrollBarVisibility="Auto" 
                           ScrollViewer.VerticalScrollBarVisibility="Auto">
-                    
+
                     <TreeView.Resources>
                         <Style TargetType="{x:Type TreeViewItem}">
                             <Setter Property="HeaderTemplate">
@@ -117,9 +117,61 @@
                     </TreeView.Resources>
                 </TreeView>
             </StackPanel>
+
+            <StackPanel>
+                <Grid>
+                    <Rectangle Fill="Blue" Height="50" Width="60">
+                    </Rectangle>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Ellipse Height="60" Width="60" Grid.Column="1">
+                        <Ellipse.Fill>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Black" Offset="0"/>
+                                <GradientStop Color="#FF3E4CD3" Offset="1"/>
+                                <GradientStop Color="#FF616BD1" Offset="0.8"/>
+                            </LinearGradientBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Grid>
+
+
+            </StackPanel>
+            
+            <!--grid布局练习，主要是行列大框架-->
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="120"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+                    <ColumnDefinition Width="4"></ColumnDefinition>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="4"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="4"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="请选择您的部门并留言：" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"></TextBlock>
+                <ComboBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4"></ComboBox>
+                <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" BorderBrush="Black"></TextBox>
+                <Button Grid.Column="2" Grid.Row="4" Content="提交"></Button>
+                <Button Grid.Column="4" Grid.Row="4" Content="清除"></Button>
+            </Grid>
+            
+            
+            
         </StackPanel>
 
 
-
     </Border>
+
 </Window>

@@ -199,5 +199,8 @@ namespace WpfApp1
             this.THREE_button.DataContext = stu_Blind;
            
         }
+        #region 用regin来隐藏一段代码
+        
+        #endregion
     }
 }
