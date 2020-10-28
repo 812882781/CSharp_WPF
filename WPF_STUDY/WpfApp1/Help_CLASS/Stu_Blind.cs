@@ -28,6 +28,7 @@ namespace WpfApp1.Help_CLASS
                 {
                     //对Date属性监听
                     PropertyChanged(this, new PropertyChangedEventArgs("Date"));
+                   
                 }
             }
         }
