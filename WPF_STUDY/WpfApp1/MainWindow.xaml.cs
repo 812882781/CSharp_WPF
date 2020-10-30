@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,9 +23,28 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        Bind_Test bind_Test = new Bind_Test();
         public MainWindow()
         {
             InitializeComponent();
+
+            //拆解binding的内在
+            Binding binding = new Binding();
+            binding.Source = bind_Test;
+            binding.Path = new PropertyPath("Name");
+            //binding.UpdateSourceTrigger = UpdateSourceTrigger.LostFocus;
+            BindingOperations.SetBinding(this.textbox,TextBox.TextProperty,binding);
+            BindingOperations.SetBinding(this.textblock, TextBlock.TextProperty, binding);
+        }
+        /// <summary>
+        /// 配合binding拆解
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            bind_Test.Name += "Name";
+            Thread.Sleep(3000);
         }
 
         private void ONE_button_Click(object sender, RoutedEventArgs e)
@@ -200,7 +220,9 @@ namespace WpfApp1
            
         }
         #region 用regin来隐藏一段代码
-        
+
         #endregion
+
+       
     }
 }

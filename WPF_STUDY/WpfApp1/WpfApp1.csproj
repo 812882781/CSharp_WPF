@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Help_CLASS\Bind_Test.cs" />
     <Compile Include="Help_CLASS\Stu_Blind.cs" />
     <Compile Include="Help_CLASS\Stru.cs" />
     <Compile Include="MainWindow.xaml.cs">
